@@ -15,31 +15,31 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(row of rows){ %>
+                <% for(data of datas){ %>
                     <tr>
                         <td>
-                            <% let no = rows.indexOf(row) %>
+                            <% let no = datas.indexOf(data) %>
                             <%= no+1 %>
                         </td>
                         <td class="text-start">
-                            <%= row.nama_galeri %>
+                            <%= data.nama_galeri %>
                         </td>
                         <td class="text-start">
-                            <%- row.detail_galeri %>
+                            <%- data.detail_galeri %>
                         </td>
                         <td>
-                            <img src="/assets/images/galeri/<%= row.foto_galeri %>" alt="Foto Berita" width="200px">
+                            <img src="/assets/images/galeri/<%= data.foto_galeri %>" alt="Foto Berita" width="200px">
                         </td>
                         <td>
-                            <%- row.aktif_galeri %>
+                            <%- data.aktif_galeri %>
                         </td>
                         <td>
-                            <a class="nav-link" href="/dashboard/editgaleri/<%= row.id_galeri %>">
+                            <a class="nav-link" href="/dashboard/editgaleri/<%= data.id_galeri %>">
                                 <span data-feather="edit"></span>
                             </a>
                         </td>
                         <td>
-                            <a class="nav-link text-danger" href="/dashboard/deletegaleri/<%= row.id_galeri %>"
+                            <a class="nav-link text-danger" href="/dashboard/deletegaleri/<%= data.id_galeri %>"
                                 onclick="return confirm('Yakin?')">
                                 <span data-feather="trash"></span>
                             </a>

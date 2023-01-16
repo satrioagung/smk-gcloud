@@ -2,15 +2,15 @@
 
     <h2 class="mt-3">Edit Galeri</h2>
     <div class="table-responsive">
-        <% for(row of rows) { %>
-            <form action="<%= row.id_galeri %>" method="post" enctype="multipart/form-data">
+        <% for(data of datas) { %>
+            <form action="<%= data.id_galeri %>" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="namagaleri" class="form-label">Nama</label>
-                    <input type="text" class="form-control" name="nama" value="<%= row.nama_galeri %>">
+                    <input type="text" class="form-control" name="nama" value="<%= data.nama_galeri %>">
                 </div>
                 <div class="mb-3">
                     <label for="detailgaleri" class="form-label">Detail Visi Misi</label>
-                    <textarea class="form-control" name="detail" rows="10" id="tiny"><%= row.detail_galeri %></textarea>
+                    <textarea class="form-control" name="detail" rows="10" id="tiny"><%= data.detail_galeri %></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="fotoGaleri" class="form-label">Foto Galeri</label>

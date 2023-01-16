@@ -2,16 +2,16 @@
 
     <h2 class="mt-3">Edit Sambutan</h2>
     <div class="table-responsive">
-        <% for(row of rows) { %>
-            <form action="<%= row.id_sambutan %>" method="post" enctype="multipart/form-data">
+        <% for(data of datas) { %>
+            <form action="<%= data.id_sambutan %>" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="namasambutan" class="form-label">Nama</label>
-                    <input type="text" class="form-control" name="nama" value="<%= row.nama_sambutan %>">
+                    <input type="text" class="form-control" name="nama" value="<%= data.nama_sambutan %>">
                 </div>
                 <div class="mb-3">
                     <label for="detailsambutan" class="form-label">Detail Visi Misi</label>
                     <textarea class="form-control" name="detail" rows="10"
-                        id="tiny"><%= row.detail_sambutan %></textarea>
+                        id="tiny"><%= data.detail_sambutan %></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="fotoSambutan" class="form-label">Foto Sambutan</label>

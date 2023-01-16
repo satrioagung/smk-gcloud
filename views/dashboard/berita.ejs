@@ -15,30 +15,30 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(row of rows){ %>
+                <% for(data of datas){ %>
                     <tr>
                         <td>
-                            <%= row.id_berita %>
+                            <%= data.id_berita %>
                         </td>
                         <td class="text-start">
-                            <%= row.nama_berita %>
+                            <%= data.nama_berita %>
                         </td>
                         <td class="text-start">
-                            <%- row.detail_berita.substring(0, 200) %> . . .
+                            <%- data.detail_berita.substring(0, 200) %> . . .
                         </td>
                         <td>
-                            <img src="/assets/images/berita/<%= row.foto_berita %>" alt="Foto Berita" width="200px">
+                            <img src="/assets/images/berita/<%= data.foto_berita %>" alt="Foto Berita" width="200px">
                         </td>
                         <td>
-                            <%= row.aktif_berita %>
+                            <%= data.aktif_berita %>
                         </td>
                         <td>
-                            <a class="nav-link" href="/dashboard/editberita/<%= row.id_berita %>">
+                            <a class="nav-link" href="/dashboard/editberita/<%= data.id_berita %>">
                                 <span data-feather="edit"></span>
                             </a>
                         </td>
                         <td>
-                            <a class="nav-link text-danger" href="/dashboard/deleteberita/<%= row.id_berita %>"
+                            <a class="nav-link text-danger" href="/dashboard/deleteberita/<%= data.id_berita %>"
                                 onclick="return confirm('Yakin?')">
                                 <span data-feather="trash"></span>
                             </a>

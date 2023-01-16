@@ -13,24 +13,24 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(row of rows){ %>
+                <% for(data of datas){ %>
                     <tr>
                         <td>
-                            <% let no = rows.indexOf(row) %>
+                            <% let no = datas.indexOf(data) %>
                             <%= no+1 %>
                         </td>
                         <td class="text-start">
-                            <%= row.nama_sambutan %>
+                            <%= data.nama_sambutan %>
                         </td>
                         <td class="text-start">
-                            <%- row.detail_sambutan %>
+                            <%- data.detail_sambutan %>
                         </td>
                         <td>
-                            <img src="/assets/images/sambutan/<%= row.foto_sambutan %>" alt="Foto Sambutan"
+                            <img src="/assets/images/sambutan/<%= data.foto_sambutan %>" alt="Foto Sambutan"
                                 width="200px">
                         </td>
                         <td>
-                            <a class="nav-link" href="/dashboard/editsambutan/<%= row.id_sambutan %>">
+                            <a class="nav-link" href="/dashboard/editsambutan/<%= data.id_sambutan %>">
                                 <span data-feather="edit"></span>
                             </a>
                         </td>
