@@ -1,14 +1,18 @@
 import express from "express";
 import mysql from "mysql";
 
+const app = express();
+const port = process.env.PORT || 3000;
+
 //import dotenv
 import dotenv from "dotenv";
 dotenv.config();
 
-const app = express();
-const port = process.env.PORT || 3000;
+app.set("view engine", "ejs");
+app.set("views", "views");
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //database connetion
 const pool = mysql.createPool({
@@ -21,13 +25,13 @@ const pool = mysql.createPool({
 
 //router get
 app.get("/", (req, res) => {
-  const query = "SELECT * FROM sambutan";
+  const query = "SELECT foto_berita FROM berita";
   pool.query(query, (error, result) => {
-    if (!result) {
-      res.json({ status: "not found" });
-    } else {
-      res.json(result);
+    const data = JSON.parse(JSON.stringify(result));
+    if (error) {
+      throw error;
     }
+    res.render("home/index", { data });
   });
 });
 
