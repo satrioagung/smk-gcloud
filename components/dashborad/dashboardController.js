@@ -296,12 +296,6 @@ export default {
     });
   },
 
-  createKomentar: (req, res) => {
-    dashboardModel.create("visimisi", req.body, (error, result) => {
-      res.redirect("/dashboard/visimisi");
-    });
-  },
-
   editKomentar: (req, res) => {
     // menangkap params  yang tidak sesuai (karakter bukan angka)
     if (req.params.id >= 0 == false) {
