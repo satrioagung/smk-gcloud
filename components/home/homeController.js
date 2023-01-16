@@ -29,4 +29,13 @@ export default {
       }
     });
   },
+
+  postKomen: (req, res)=>{
+    homeModel.createKomen(req.body, (error, result)=>{
+      if(error){
+        throw error
+      }
+      res.redirect(`/berita/${req.body.id_berita}`)
+    })
+  }
 };

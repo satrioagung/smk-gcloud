@@ -1,0 +1,51 @@
+<%- include('layouts/header') %>
+
+    <h2 class="mt-3">Daftar Admin</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Hapus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(data of datas){ %>
+                    <tr>
+                        <td>
+                            <% let no = datas.indexOf(data) %>
+                            <%= no+1 %>
+                        </td>
+                        <td class="text-start">
+                            <%= data.user_email %>
+                        </td>
+                        <td>
+                            <a class="nav-link text-danger" href="/dashboard/deleteadmin/<%= data.user_id %>"
+                                onclick="return confirm('Yakin?')">
+                                <span data-feather="trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+            </tbody>
+            <% } %>
+        </table>
+
+        <h2 class="pt-5">Tambah Admin</h2>
+        <form action="/dashboard/createadmin" method="post" class="col-md-4">
+            <div class="mb-3">
+                <label for="namaAdmin" class="form-label">Nama :</label>
+                <input type="text" class="form-control" name="nama" placeholder="Masukkan Nama" required>
+            </div>
+            <div class="mb-3">
+                <label for="emailAdmin" class="form-label">Email :</label>
+                <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required>
+            </div>
+            <div class="mb-3">
+                <label for="passAdmin" class="form-label">Password :</label>
+                <input type="password" class="form-control" name="password" placeholder="Masukkan Password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+        </form>
+
+        <%- include('layouts/footer') %>

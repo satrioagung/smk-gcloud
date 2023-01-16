@@ -1,0 +1,68 @@
+<%- include('layouts/header-edit') %>
+
+    <h2 class="mt-3">Daftar Berita</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle text-center">
+            <thead class="table-dark align-middle">
+                <tr>
+                    <th scope="col">ID Berita</th>
+                    <th scope="col">Judul</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Foto</th>
+                    <th scope="col">Aktif</th>
+                    <th scope="col">Ubah</th>
+                    <th scope="col">Hapus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(row of rows){ %>
+                    <tr>
+                        <td>
+                            <%= row.id_berita %>
+                        </td>
+                        <td class="text-start">
+                            <%= row.nama_berita %>
+                        </td>
+                        <td class="text-start">
+                            <%- row.detail_berita.substring(0, 200) %> . . .
+                        </td>
+                        <td>
+                            <img src="/assets/images/berita/<%= row.foto_berita %>" alt="Foto Berita" width="200px">
+                        </td>
+                        <td>
+                            <%= row.aktif_berita %>
+                        </td>
+                        <td>
+                            <a class="nav-link" href="/dashboard/editberita/<%= row.id_berita %>">
+                                <span data-feather="edit"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="nav-link text-danger" href="/dashboard/deleteberita/<%= row.id_berita %>"
+                                onclick="return confirm('Yakin?')">
+                                <span data-feather="trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+            </tbody>
+            <% } %>
+        </table>
+        <h2 class="pt-5">Tambah Berita</h2>
+        <form action="/dashboard/createBerita" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="namaBerita" class="form-label">Nama</label>
+                <input type="text" class="form-control" name="nama">
+            </div>
+            <div class="mb-3">
+                <label for="detailBerita" class="form-label">Detail Berita</label>
+                <textarea class="form-control" name="detail" rows="10" id="tiny"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="fotoBerita" class="form-label">Foto Berita</label>
+                <input class="form-control" type="file" name="foto" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+        </form>
+    </div>
+
+    <%- include('layouts/footer') %>
