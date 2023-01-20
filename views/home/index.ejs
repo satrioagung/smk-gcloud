@@ -111,7 +111,7 @@
             <div class="row align-items-center">
                 <% for( data of datas[1] ) { %>
                     <div class="col-md text-center">
-                        <img src="/assets/images/sambutan/<%= data.foto_sambutan %>" alt="Logo SMK Bintang Sembilan"
+                        <img src="https://storage.googleapis.com/agungsatrio/sambutan/<%= data.foto_sambutan %>" alt="Logo SMK Bintang Sembilan"
                             width="300">
                     </div>
                     <div class="col-md">
@@ -165,11 +165,11 @@
                     <H2>Berita dan Pengumuman</H2>
                 </div>
             </div>
-            <div class="row justify-content-around mt-2">
+            <div class="row justify-content-center mt-2">
                 <% for(data of datas[3]) {%>
                     <div class="col-md-4 mt-2">
                         <div class="card">
-                            <img src="/assets/images/berita/<%= data.foto_berita %>" class="card-img-top"
+                            <img src="https://storage.googleapis.com/agungsatrio/berita/<%= data.foto_berita %>" class="card-img-top"
                                 alt="image-berita-1">
                             <div class="card-body">
                                 <h5 class="card-title">
@@ -197,11 +197,11 @@
                     <H2>Galeri Foto</H2>
                 </div>
             </div>
-            <div class="row justify-content-start mt-2">
+            <div class="row justify-content-center mt-2">
                 <% for( data of datas[4] ) { %>
                     <div class="col-md-4 mt-2">
                         <div class="card">
-                            <img src="/assets/images/galeri/<%= data.foto_galeri %>" class="card-img-top" alt="Image 1">
+                            <img src="https://storage.googleapis.com/agungsatrio/galeri/<%= data.foto_galeri %>" class="card-img-top" alt="Image 1">
                             <div class="card-body">
                                 <h5 class="card-text">
                                     <%=data.nama_galeri %>

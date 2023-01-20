@@ -1,7 +1,7 @@
 import express from "express";
 const Router = express.Router();
 import dashboardController from "./dashboardController.js";
-import uploadImage from "../../middleware/uploadImage.js";
+import {fotoBerita, fotoGaleri, fotoSambutan} from "../../middleware/uploadImage.js";
 import verify from "../../middleware/verify.js";
 
 Router.get("/", verify.isLogin, dashboardController.index);
@@ -19,7 +19,7 @@ Router.post("/editvisimisi/:id", verify.isLogin, dashboardController.updateVisiM
 // sambutan
 Router.get("/sambutan", verify.isLogin, dashboardController.sambutan);
 Router.get("/editsambutan/:id", verify.isLogin, dashboardController.editSambutan);
-Router.post( "/editsambutan/:id", verify.isLogin, uploadImage.fotoSambutan.single('foto'), dashboardController.updateSambutan);
+Router.post( "/editsambutan/:id", verify.isLogin, fotoSambutan.single('foto'), dashboardController.updateSambutan);
 
 // kejuruan
 Router.get("/kejuruan", verify.isLogin, dashboardController.kejuruan);
@@ -28,9 +28,9 @@ Router.post("/editkejuruan/:id", verify.isLogin, dashboardController.updateKejur
 
 // berita
 Router.get("/berita", verify.isLogin, dashboardController.berita);
-Router.post("/createberita", verify.isLogin, uploadImage.fotoBerita.single('foto'), dashboardController.createBerita);
+Router.post("/createberita", verify.isLogin, fotoBerita.single('foto'), dashboardController.createBerita);
 Router.get("/editberita/:id", verify.isLogin, dashboardController.editBerita);
-Router.post("/editberita/:id", verify.isLogin, uploadImage.fotoBerita.single('foto'), dashboardController.updateBerita);
+Router.post("/editberita/:id", verify.isLogin, fotoBerita.single('foto'), dashboardController.updateBerita);
 Router.get("/deleteberita/:id", verify.isLogin, dashboardController.deleteBerita);
 
 // komentar
@@ -41,9 +41,9 @@ Router.get("/deletekomentar/:id", verify.isLogin, dashboardController.deleteKome
 
 // galeri
 Router.get("/galeri", verify.isLogin, dashboardController.galeri);
-Router.post("/creategaleri", verify.isLogin, uploadImage.fotoGaleri.single('foto'), dashboardController.createGaleri);
+Router.post("/creategaleri", verify.isLogin, fotoGaleri.single('foto'), dashboardController.createGaleri);
 Router.get("/editgaleri/:id", verify.isLogin, dashboardController.editGaleri);
-Router.post("/editgaleri/:id", verify.isLogin, uploadImage.fotoGaleri.single('foto'), dashboardController.updateGaleri);
+Router.post("/editgaleri/:id", verify.isLogin, fotoGaleri.single('foto'), dashboardController.updateGaleri);
 Router.get( "/deletegaleri/:id", verify.isLogin, dashboardController.deleteGaleri);
 
 

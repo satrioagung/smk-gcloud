@@ -18,8 +18,8 @@
                 <% for(data of datas){ %>
                     <tr>
                         <td>
-                            <% let no = datas.indexOf(data) %>
-                            <%= no+1 %>
+                            <% let no=datas.indexOf(data) %>
+                                <%= no+1 %>
                         </td>
                         <td class="text-start">
                             <%= data.nama_galeri %>
@@ -28,7 +28,8 @@
                             <%- data.detail_galeri %>
                         </td>
                         <td>
-                            <img src="/assets/images/galeri/<%= data.foto_galeri %>" alt="Foto Berita" width="200px">
+                            <img src="https://storage.googleapis.com/agungsatrio/galeri/<%= data.foto_galeri %>"
+                                alt="Foto Berita" width="200px">
                         </td>
                         <td>
                             <%- data.aktif_galeri %>

@@ -8,11 +8,18 @@ instance_class: F2
 # env_variables:
 #   BUCKET_NAME: "example-gcs-bucket"
 
-handlers:
-- url: /stylesheets
-  static_dir: stylesheets
+env_variables:
+  DB_HOST: "34.173.36.241"
+  DB_USER: smk
+  DB_PASS: "lGZE3Mjyx2lf^:cv"
+  DB_NAME: "smkbintang9"
+  INSTANCE_CONNECTION_NAME: "healthy-ion-374517:us-central1:bintang9"
 
-- url: /.*
-  secure: always
-  redirect_http_response_code: 301
-  script: auto
+handlers:
+  - url: /assets
+    static_dir: assets
+
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto

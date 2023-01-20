@@ -1,5 +1,25 @@
 import dashboardModel from "./dashboardModel.js";
 import fs from "fs";
+import { Storage } from "@google-cloud/storage";
+
+// import path
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// konfigurasi dan fungsi-fungsi gcloud storage
+const gc = new Storage({
+  projectId: "healthy-ion-374517",
+  keyFilename: path.join(
+    __dirname,
+    "../../healthy-ion-374517-cb1ec666a96d.json"
+  ),
+});
+
+async function deleteFile(path) {
+  await gc.bucket("agungsatrio").file(path).delete();
+}
 
 export default {
   index: (req, res) => {
@@ -127,10 +147,8 @@ export default {
         }
         const row = JSON.parse(JSON.stringify(result));
         const nameFoto = row.map((obj) => obj.foto_sambutan);
-        const pathFoto = `assets/images/sambutan/${nameFoto.toString()}`;
-        if (fs.existsSync(pathFoto)) {
-          fs.unlinkSync(pathFoto);
-        }
+        const pathFoto = `sambutan/${nameFoto.toString()}`;
+        deleteFile(pathFoto).catch(console.error);
       });
 
       // Update data baru ke database
@@ -249,10 +267,8 @@ export default {
         }
         const row = JSON.parse(JSON.stringify(result));
         const nameFoto = row.map((obj) => obj.foto_berita);
-        const pathFoto = `assets/images/berita/${nameFoto.toString()}`;
-        if (fs.existsSync(pathFoto)) {
-          fs.unlinkSync(pathFoto);
-        }
+        const pathFoto = `berita/${nameFoto.toString()}`;
+        deleteFile(pathFoto).catch(console.error);
       });
 
       // Update data baru ke database
@@ -273,10 +289,8 @@ export default {
     dashboardModel.getById("berita", req.params.id, (err, result) => {
       const row = JSON.parse(JSON.stringify(result));
       const nameFoto = row.map((obj) => obj.foto_berita);
-      const pathFoto = `assets/images/berita/${nameFoto.toString()}`;
-      if (fs.existsSync(pathFoto)) {
-        fs.unlinkSync(pathFoto);
-      }
+      const pathFoto = `berita/${nameFoto.toString()}`;
+      deleteFile(pathFoto).catch(console.error);
     });
 
     // Hapus data di database
@@ -389,10 +403,8 @@ export default {
         }
         const row = JSON.parse(JSON.stringify(result));
         const nameFoto = row.map((obj) => obj.foto_galeri);
-        const pathFoto = `assets/images/galeri/${nameFoto.toString()}`;
-        if (fs.existsSync(pathFoto)) {
-          fs.unlinkSync(pathFoto);
-        }
+        const pathFoto = `galeri/${nameFoto.toString()}`;
+        deleteFile(pathFoto).catch(console.error);
       });
 
       // Update data baru ke database
@@ -416,10 +428,8 @@ export default {
       }
       const row = JSON.parse(JSON.stringify(result));
       const nameFoto = row.map((obj) => obj.foto_galeri);
-      const pathFoto = `assets/images/galeri/${nameFoto.toString()}`;
-      if (fs.existsSync(pathFoto)) {
-        fs.unlinkSync(pathFoto);
-      }
+      const pathFoto = `galeri/${nameFoto.toString()}`;
+      deleteFile(pathFoto).catch(console.error);
     });
 
     // Hapus data di database

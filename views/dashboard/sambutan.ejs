@@ -16,8 +16,8 @@
                 <% for(data of datas){ %>
                     <tr>
                         <td>
-                            <% let no = datas.indexOf(data) %>
-                            <%= no+1 %>
+                            <% let no=datas.indexOf(data) %>
+                                <%= no+1 %>
                         </td>
                         <td class="text-start">
                             <%= data.nama_sambutan %>
@@ -26,8 +26,8 @@
                             <%- data.detail_sambutan %>
                         </td>
                         <td>
-                            <img src="/assets/images/sambutan/<%= data.foto_sambutan %>" alt="Foto Sambutan"
-                                width="200px">
+                            <img src="https://storage.googleapis.com/agungsatrio/sambutan/<%= data.foto_sambutan %>"
+                                alt="Foto Sambutan" width="200px">
                         </td>
                         <td>
                             <a class="nav-link" href="/dashboard/editsambutan/<%= data.id_sambutan %>">
