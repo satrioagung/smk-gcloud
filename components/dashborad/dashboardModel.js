@@ -28,6 +28,16 @@ export default {
     pool.query(query, callback);
   },
 
+  // Create berita
+  createBerita: (data, url, file, callback) => {
+    const query = `INSERT INTO berita SET 
+    nama_berita='${data.nama}', 
+    detail_berita='${data.detail}',
+    foto_berita='${file}',
+    url_berita='${url}'`;
+    pool.query(query, callback);
+  },
+
   // Create data with uploading foto by Multer
   createUpload: (tabel, data, file, callback) => {
     const query = `INSERT INTO ${tabel} SET 
@@ -42,6 +52,29 @@ export default {
     nama_${tabel}='${data.nama}', 
     detail_${tabel}='${data.detail}' 
     WHERE id_${tabel}=${id}`;
+    pool.query(query, callback);
+  },
+
+  // Update berita
+  updateBerita: (data, url, id, callback) => {
+    const query = `UPDATE berita SET 
+    nama_berita='${data.nama}', 
+    detail_berita='${data.detail}', 
+    aktif_berita='${data.aktif}', 
+    url_berita='${url}' 
+    WHERE id_berita=${id}`;
+    pool.query(query, callback);
+  },
+
+  // Update berita with uploading foto by Multer
+  updateBeritaUpload: (data, url, id, file, callback) => {
+    const query = `UPDATE berita SET 
+    nama_berita='${data.nama}', 
+    detail_berita='${data.detail}', 
+    aktif_berita='${data.aktif}',
+    foto_berita='${file}', 
+    url_berita='${url}' 
+    WHERE id_berita=${id}`;
     pool.query(query, callback);
   },
 

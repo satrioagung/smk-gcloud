@@ -60,62 +60,61 @@
     <section>
         <div class="container">
             <!-- Detaul  Berita -->
-            <% for(data of datas[0]){ %>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Detail Berita</h3>
+            <div class="card">
+                <div class="card-header">
+                    <h3>Detail Berita</h3>
+                </div>
+                <div class="card-body">
+                    <img src="https://storage.googleapis.com/agungsatrio/berita/<%= datas[0].foto_berita %>"
+                        class="img-fluid" alt="image-berita-1" width="100%">
+                    <h3 class="card-title mt-3">
+                        <%= datas[0].nama_berita %>
+                    </h3>
+                    <div>
+                        <%- datas[0].detail_berita %>
                     </div>
-                    <div class="card-body">
-                        <img src="https://storage.googleapis.com/agungsatrio/berita/<%= data.foto_berita %>"
-                            class="img-fluid" alt="image-berita-1" width="100%">
-                        <h3 class="card-title mt-3">
-                            <%= data.nama_berita %>
-                        </h3>
-                        <div>
-                            <%- data.detail_berita %>
-                        </div>
-                        <a href="/" class="btn btn-primary">Kembali ke Homepage</a>
-                    </div>
+                    <a href="/" class="btn btn-primary">Kembali ke Homepage</a>
+                </div>
 
-                    <!-- Daftar Komentar -->
-                    <h4 class="ps-3 mt-3">Komentar</h4>
-                    <ul class="list-group list-group-flush mx-5">
-                        <% for(data1 of datas[1]){%>
+                <!-- Daftar Komentar -->
+                <h4 class="ps-3 mt-3">Komentar</h4>
+                <ul class="list-group list-group-flush mx-5">
+                    <% const activeData=datas.filter(data=> data.aktif_komentar == 'yes') %>
+                        <% for(data of activeData){%>
                             <li class="list-group-item">
                                 <h6>
-                                    <%= data1.nama_komentar %>
+                                    <%= data.nama_komentar %>
                                         <span class="fw-normal">
-                                            [<%= moment(data1.date_komentar).format('D/MMMM/YYYY') %>]
+                                            [<%= moment(data.date_komentar).format('D/MMMM/YYYY') %>]
                                         </span>
                                 </h6>
                                 <p>
-                                    <%= data1.detail_komentar %>
+                                    <%= data.detail_komentar %>
                                 </p>
                             </li>
                             <% } %>
-                    </ul>
+                </ul>
 
-                    <!-- Tambah Komentar -->
-                    <h4 class="ps-3 mt-5">Tambahkan Komentar</h4>
-                    <form action="/komen" method="post">
-                        <input type="text" name="id_berita" value="<%= data.id_berita %>" hidden>
-                        <% } %>
-                            <div class="px-5">
-                                <label class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="nama" required>
-                            </div>
-                            <div class="px-5 mt-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="name@example.com"
-                                    required>
-                            </div>
-                            <div class="px-5 mt-3">
-                                <label class="form-label">Komentar</label>
-                                <textarea class="form-control" name="detail" rows="3" required></textarea>
-                            </div>
-                            <button class="btn btn-success m-5 mt-3">Kirim Komentar</button>
-                    </form>
-                </div>
+                <!-- Tambah Komentar -->
+                <h4 class="ps-3 mt-5">Tambahkan Komentar</h4>
+                <form action="/komen" method="post">
+                    <input type="text" name="id_berita" value="<%= datas[0].id_berita %>" hidden>
+                    <input type="text" name="url" value="<%= datas[0].url_berita %>" hidden>
+                    <div class="px-5">
+                        <label class="form-label">Nama</label>
+                        <input type="text" class="form-control" name="nama" required>
+                    </div>
+                    <div class="px-5 mt-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="px-5 mt-3">
+                        <label class="form-label">Komentar</label>
+                        <textarea class="form-control" name="detail" rows="3" required></textarea>
+                    </div>
+                    <button class="btn btn-success m-5 mt-3">Kirim Komentar</button>
+                </form>
+            </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path fill="#0d6efd" fill-opacity="1"

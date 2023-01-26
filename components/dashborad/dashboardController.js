@@ -217,9 +217,11 @@ export default {
   },
 
   createBerita: (req, res) => {
-    dashboardModel.createUpload(
-      "berita",
+    let url = req.body.nama;
+    url = url.split(" ").slice(0, 7).join("-").toLocaleLowerCase();
+    dashboardModel.createBerita(
       req.body,
+      url,
       req.file.filename,
       (error, result) => {
         res.redirect("/dashboard/berita");
@@ -247,11 +249,13 @@ export default {
   },
 
   updateBerita: (req, res) => {
+    let url = req.body.nama;
+    url = url.split(" ").slice(0, 7).join("-").toLocaleLowerCase();
     if (!req.file) {
       // Kondisi jika tidak update foto
-      dashboardModel.updateAktif(
-        "berita",
+      dashboardModel.updateBerita(
         req.body,
+        url,
         req.params.id,
         (error, result) => {
           console.log("Foto tidak diperbarui!");
@@ -272,9 +276,9 @@ export default {
       });
 
       // Update data baru ke database
-      dashboardModel.updateUploadAktif(
-        "berita",
+      dashboardModel.updateBeritaUpload(
         req.body,
+        url,
         req.params.id,
         req.file.filename,
         (error, result) => {

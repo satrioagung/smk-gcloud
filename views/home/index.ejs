@@ -105,14 +105,14 @@
     </section>
     <!-- Akhir Visi Misi -->
 
-       <!-- Sambiutan -->
-       <section id="sambutan" class="bg-primary text-light">
+    <!-- Sambiutan -->
+    <section id="sambutan" class="bg-primary text-light">
         <div class="container mt-3">
             <div class="row align-items-center">
                 <% for( data of datas[1] ) { %>
                     <div class="col-md text-center">
-                        <img src="https://storage.googleapis.com/agungsatrio/sambutan/<%= data.foto_sambutan %>" alt="Logo SMK Bintang Sembilan"
-                            width="300">
+                        <img src="https://storage.googleapis.com/agungsatrio/sambutan/<%= data.foto_sambutan %>"
+                            alt="foto sambutan SMK Bintang Sembilan" width="300">
                     </div>
                     <div class="col-md">
                         <H2>
@@ -169,8 +169,8 @@
                 <% for(data of datas[3]) {%>
                     <div class="col-md-4 mt-2">
                         <div class="card">
-                            <img src="https://storage.googleapis.com/agungsatrio/berita/<%= data.foto_berita %>" class="card-img-top"
-                                alt="image-berita-1">
+                            <img src="https://storage.googleapis.com/agungsatrio/berita/<%= data.foto_berita %>"
+                                class="card-img-top" alt="<%= data.nama_berita %>">
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <%= data.nama_berita %>
@@ -178,7 +178,7 @@
                                 <p class="card-text">
                                     <%- data.detail_berita.substring(0, 100) %>...
                                 </p>
-                                <a class="btn btn-primary" href="/berita/<%= data.id_berita%>">Terus
+                                <a class="btn btn-primary" href="/berita/<%= data.url_berita%>">Terus
                                     Membaca...</a>
                             </div>
                         </div>
@@ -201,7 +201,8 @@
                 <% for( data of datas[4] ) { %>
                     <div class="col-md-4 mt-2">
                         <div class="card">
-                            <img src="https://storage.googleapis.com/agungsatrio/galeri/<%= data.foto_galeri %>" class="card-img-top" alt="Image 1">
+                            <img src="https://storage.googleapis.com/agungsatrio/galeri/<%= data.foto_galeri %>"
+                                class="card-img-top" alt="<%=data.nama_galeri %>">
                             <div class="card-body">
                                 <h5 class="card-text">
                                     <%=data.nama_galeri %>

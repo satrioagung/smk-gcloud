@@ -1,7 +1,6 @@
 import homeModel from "./homeModel.js";
 import moment from "moment/moment.js";
 
-
 export default {
   index: (req, res) => {
     homeModel.getAll((error, result) => {
@@ -15,13 +14,14 @@ export default {
 
   detailBerita: (req, res) => {
     // menangani params yang tidak sesuai
-    if(req.params.id >= 0 == false){
-      return res.render("home/page-not-found");
-    }
+    // if(req.params.id >= 0 == false){
+    //   return res.render("home/page-not-found");
+    // }
 
     // menangani params yang sesuai
-    homeModel.getBerita(req.params.id, (err, result) => {
-      if(result[0].length < 1){
+    homeModel.getBerita(req.params.url, (error, result) => {
+      if (error) throw error;
+      if (result[0].length < 1) {
         res.render("home/page-not-found");
       } else {
         const datas = JSON.parse(JSON.stringify(result));
@@ -30,12 +30,12 @@ export default {
     });
   },
 
-  postKomen: (req, res)=>{
-    homeModel.createKomen(req.body, (error, result)=>{
-      if(error){
-        throw error
+  postKomen: (req, res) => {
+    homeModel.createKomen(req.body, (error, result) => {
+      if (error) {
+        throw error;
       }
-      res.redirect(`/berita/${req.body.id_berita}`)
-    })
-  }
+      res.redirect(`/berita/${req.body.url}`);
+    });
+  },
 };
